@@ -40,7 +40,7 @@ public class LoginTest extends BaseTest {
 
 	            Assert.assertEquals(
 	                    actualMessage,
-	                    "Invali credentials");
+	                    "Invalid credentials");
 
 	            System.out.println("Invalid Login Passed");
 	    }
