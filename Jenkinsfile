@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.15'
+        maven 'Maven 3.9'
     }
 
     stages {
@@ -32,7 +32,7 @@ pipeline {
     post {
 
         always {
-            publishTestNG testResultsPattern: 'test-output/testng-results.xml'
+             junit 'target/surefire-reports/*.xml'
         }
 
         success {
