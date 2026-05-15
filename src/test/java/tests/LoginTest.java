@@ -12,43 +12,55 @@ public class LoginTest extends BaseTest {
 	
 	
 	
-	  @Test(dataProvider = "loginData",
-	          dataProviderClass = DataProviders.class)
+	@Test(dataProvider = "loginData",
+		      dataProviderClass = DataProviders.class)
 
-	    public void loginTest(String username, String password,String expectedResult) {
+		public void loginTest(String username,
+		                      String password,
+		                      String expectedResult) {
 
-	        LoginPage loginPage = new LoginPage(driver);
+		    test = extent.createTest(
+		            "Login Test - " + username + " / " + expectedResult);
 
-	        loginPage.login(username, password);
-	        
-	        
-	     // VALID LOGIN ASSERTION
-	        if(expectedResult.equalsIgnoreCase("Valid")) {
+		    test.info("Browser launched");
 
-	            Assert.assertTrue(
-	                    loginPage.isDashboardDisplayed(),
-	                    "Valid login test failed");
+		    LoginPage loginPage = new LoginPage(driver);
 
-	            System.out.println("Valid Login Passed");
-	        }
+		    test.info("Entering username");
+		    test.info("Entering password");
 
-	        // INVALID LOGIN ASSERTION
-	        else if(expectedResult.equalsIgnoreCase("Invalid")) {
+		    loginPage.login(username, password);
 
-	            String actualMessage =
-	                    loginPage.getErrorMessage();
+		    test.info("Clicked login button");
 
-	            Assert.assertEquals(
-	                    actualMessage,
-	                    "Invalid credentials");
+		    // VALID LOGIN ASSERTION
+		    if(expectedResult.equalsIgnoreCase("Valid")) {
 
-	            System.out.println("Invalid Login Passed");
-	    }
-	}
+		        Assert.assertTrue(
+		                loginPage.isDashboardDisplayed(),
+		                "Valid login test failed");
+
+		        test.pass("Valid Login Passed");
+
+		        System.out.println("Valid Login Passed");
+		    }
+
+		    // INVALID LOGIN ASSERTION
+		    else if(expectedResult.equalsIgnoreCase("Invalid")) {
+
+		        String actualMessage =
+		                loginPage.getErrorMessage();
+
+		        Assert.assertEquals(
+		                actualMessage,
+		                "Invalid credentials");
+
+		        test.pass("Invalid Login Passed");
+
+		        System.out.println("Invalid Login Passed");
+		    }
+		}
 	
 }
-	
-	
-	
 	
 

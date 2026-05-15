@@ -6,7 +6,7 @@ public class ExtentManager {
   
 	static ExtentReports extent;
 
-    public static ExtentReports getExtentReports() {
+    public static ExtentReports getInstance() {
 
         if(extent == null) {
 
