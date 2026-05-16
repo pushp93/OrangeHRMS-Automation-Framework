@@ -32,7 +32,7 @@ public class LoginPage {
 	    @FindBy(xpath = "//button[@type='submit']")
 	    WebElement btnLogin;
 
-	    @FindBy(xpath = "//h6[text()='Dashboard']")
+	    @FindBy(xpath = "//h6[contains(.,'Dashboard')]")
 	    WebElement dashboardText;
 
 	    @FindBy(xpath = "//p[contains(@class,'oxd-alert-content-text')]")
