@@ -7,15 +7,17 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-import base.BaseTest;
 import utils.ExtentManager;
 import utils.ScreenshotUtil;
+import base.BaseTest;
+
+
 
 
 	public class TestListener implements ITestListener {
 		
-		 ExtentReports extent =
-		            ExtentManager.getExtentReports();
+		ExtentReports extent =
+		        ExtentManager.getInstance();
 
 		    // Thread safe ExtentTest
 		    ThreadLocal<ExtentTest> test =
