@@ -2,12 +2,14 @@ package tests;
 
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+import listeners.TestListener;
 import base.BaseTest;
 import dataproviders.DataProviders;
 import pages.LoginPage;
 
+@Listeners(TestListener.class)
 public class LoginTest extends BaseTest {
 	
 	
